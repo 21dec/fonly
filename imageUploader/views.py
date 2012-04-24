@@ -20,17 +20,26 @@ def index(request):
     return HttpResponse(t.render(c))
 
 def upload(request):
-    thumbPath = saveImage(request.FILES['originFile'], request.POST['title'])
-    title = request.POST['title']
+    _filename = saveImage(request.FILES['originFile'], request.POST['title'])
+    _key = _filename.split('.')[0]
+    _title = request.POST['title']
+    _phone = request.POST['phone']
+
+    Post.objects.create(
+        _id = _key,
+        title = _title,
+        filename = _filename,
+        phone = _phone 
+    )
 
     t = loader.get_template('imageUploader/upload.html')
-    c = RequestContext(request, {'thumbPath':thumbPath, 'title':title})
+    c = RequestContext(request, {'thumbFilename':'c_'+_filename, 'title':_title})
 
     return HttpResponse(t.render(c))
     
 def uploadSuccess(request):
     t = loader.get_template('imageUploader/uploadSuccess.html')
-    c = RequestContext(request, {'thumbPath':'asdf'})
+    c = RequestContext(request, {'thumbUrl':'asdf'})
 
     return HttpResponse(t.render(c))
 
@@ -46,7 +55,7 @@ def saveImage(file, title):
     resizeAndCut(filename)
     os.remove(UPLOAD_DIR + filename)
 
-    return 'c_' + filename
+    return filename
 
 def resizeAndCut(imageFile):
     im = Image.open(UPLOAD_DIR + imageFile)
@@ -72,7 +81,7 @@ def resizeAndCut(imageFile):
 
 def uniqueName(file, title):
     filename = file._get_name()
-    name, ext = os.path.splitext(filename)
+    name, ext = os.path.splitext(filename)[0], '.png'
     h = hashlib.new('sha1')
     h.update(filename.encode('utf8'))
     h.update(str(time.time()))

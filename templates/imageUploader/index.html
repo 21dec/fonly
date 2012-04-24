@@ -27,7 +27,8 @@ function shorten() {
     <h2>Upload image for icon</h2>
     <form id="mainForm" name="mainForm" class="well" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">{% csrf_token %}
         <input type="file" name="originFile" id="originFile"/>
-        <input type="text" name="title" id="title" value="" />
+        TITLE<input type="text" name="title" id="title" value="" />
+        PHONE NUMBER<input type="text" name="phone" id="phone" value="" />
         <input type="button" value="Shorten" onclick="shorten()"/>
     </form>
 </div>
