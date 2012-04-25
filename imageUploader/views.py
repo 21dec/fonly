@@ -33,7 +33,7 @@ def upload(request):
     )
 
     t = loader.get_template('imageUploader/upload.html')
-    c = RequestContext(request, {'thumbFilename':'114_'+_filename, 'title':_title})
+    c = RequestContext(request, {'filename':'114_'+_filename, 'title':_title, 'id':_key})
 
     return HttpResponse(t.render(c))
     
@@ -73,11 +73,10 @@ def resizeAndCut(imageFile):
 
     box = left, upper, right, lower
 
-    size = ((114, 114),(80, 80))
-    for s in size:
+    for size in ((114, 114),(80, 80)):
         newim = im.crop(box)
-        newim.thumbnail(s, Image.ANTIALIAS)
-        newim.save(UPLOAD_DIR + str(s[0]) + '_' + imageFile, "PNG")
+        newim.thumbnail(size, Image.ANTIALIAS)
+        newim.save(UPLOAD_DIR + str(size[0]) + '_' + imageFile, "PNG")
 
 def uniqueName(file, title):
     filename = file._get_name()
