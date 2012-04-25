@@ -13,9 +13,8 @@ from PIL import Image
 UPLOAD_DIR = './static/upload/'
 
 def index(request):
-    posts = Post.objects.all()
     t = loader.get_template('imageUploader/index.html')
-    c = RequestContext(request, {'posts':posts})
+    c = RequestContext(request, {})
 
     return HttpResponse(t.render(c))
 
