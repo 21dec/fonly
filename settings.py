@@ -12,7 +12,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django_mongodb_engine',
-        'NAME': 'pholy'
+        'NAME': 'pholy',
+	'HOST': '192.168.12.107'
     }
 }
 
@@ -68,7 +69,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/simpnet2/Documents/Projects/pholy/pholy/static',
+    './static',
 )
 
 # List of finder classes that know how to find static files in
@@ -103,7 +104,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/simpnet2/Projects/pholy/pholy/templates'
+    './templates'
 )
 
 INSTALLED_APPS = (
@@ -118,7 +119,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'imageUploader',
-    'avatar'
 )
 
 # A sample logging configuration. The only tangible logging
