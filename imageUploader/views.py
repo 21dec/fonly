@@ -13,9 +13,9 @@ from PIL import Image
 UPLOAD_DIR = './static/upload/'
 
 def index(request):
-    imageList = Post.objects.all()
+    posts = Post.objects.all()
     t = loader.get_template('imageUploader/index.html')
-    c = RequestContext(request, {'imageList':imageList})
+    c = RequestContext(request, {'posts':posts})
 
     return HttpResponse(t.render(c))
 
@@ -33,7 +33,7 @@ def upload(request):
     )
 
     t = loader.get_template('imageUploader/upload.html')
-    c = RequestContext(request, {'thumbFilename':'c_'+_filename, 'title':_title})
+    c = RequestContext(request, {'thumbFilename':'114_'+_filename, 'title':_title})
 
     return HttpResponse(t.render(c))
     
@@ -73,11 +73,11 @@ def resizeAndCut(imageFile):
 
     box = left, upper, right, lower
 
-    size = 114, 114
-    newim = im.crop(box)
-    newim.thumbnail(size, Image.ANTIALIAS)
-    newim.save(UPLOAD_DIR + 'c_' + imageFile, "PNG")
-
+    size = ((114, 114),(80, 80))
+    for s in size:
+        newim = im.crop(box)
+        newim.thumbnail(s, Image.ANTIALIAS)
+        newim.save(UPLOAD_DIR + str(s[0]) + '_' + imageFile, "PNG")
 
 def uniqueName(file, title):
     filename = file._get_name()

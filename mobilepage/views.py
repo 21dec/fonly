@@ -10,7 +10,6 @@ def index(request, pk):
     
     post = Post.objects.get(_id=pk)
     
-    #REFERER로 체크하면 안된다.
     #phonecall = 'false' if request.META.has_key('HTTP_REFERER') else 'true'
 
     phonecall = 'false'

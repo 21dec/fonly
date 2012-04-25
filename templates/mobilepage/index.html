@@ -1,9 +1,16 @@
-{{phonecall}}
+<html>
+<head>
+<title>{{post.title}}</title>
+<link rel="apple-touch-icon" href="/static/upload/114_{{post.filename}}" />
+</head>
+<body>
 <script>
 if("true"=="{{phonecall}}") {
     //window.location = "tel://{{post.phone}}";
 }
 </script>
 <p>
-<a href="tel://{{post.phone}}">전화걸기</a>
+<a href="tel:{{post.phone}}">전화걸기</a>
 <a href="http://192.168.12.107/p/9d0a52/">현재 페이지</a>
+</body>
+</html>
