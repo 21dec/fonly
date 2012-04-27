@@ -20,7 +20,7 @@ def index(request):
     return HttpResponse(t.render(c))
 
 def upload(request):
-    _filename = saveImage(request.FILES['fileUpload'], request.POST['title'])
+    _filename = saveImage(request.FILES['originFile'], request.POST['title'])
     _key = _filename.split('.')[0]
     _title = request.POST['title']
     _phone = request.POST['phone']
