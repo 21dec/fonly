@@ -1,4 +1,11 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Welcome to fon.ly</title>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 function sendMypeople() {
     var prefix="{{title}}";
@@ -20,8 +27,32 @@ function updateFacebook() {
 </script>
 
 <style>
+body
+{
+background-image:url('/static/img/fonly2.jpg');
+background-repeat:no-repeat;
+background-position:center top; 
+}
+.uiBox {
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:400px;
+height:250px;
+top:291px;
+text-align:center;
 
-body {background-image:url(/static/img/bg.png);}
+}
+
+#uploadedImage {
+    border-radius:30px;
+    border: solid 5px white;
+    margin:auto auto;
+    width:114px;
+    height:114px;
+    padding:0px;
+    background-image:url(/static/upload/{{filename}})
+}
 
 #content {
     text-align:center;
@@ -29,35 +60,11 @@ body {background-image:url(/static/img/bg.png);}
     width:100%;
     height:100%;
 }
-#uploadedImage {
-    border-radius:30px;
-    border: solid 5px red;
-    width:114px;
-    height:114px;
-    padding:0px;
-    background-image:url(/static/upload/{{filename}})
-}
 
 </style>
 <body>
 <div id="fb-root"></div>
 <script type="text/javascript">
-    window.fbAsyncInit = function() {
-        FB.init({appId: '368560879861636', status: true, cookie: true, xfbml: true});
-                
-        FB.Event.subscribe('auth.login', function(response) {
-             login();
-        });
-        FB.Event.subscribe('auth.logout', function(response) {
-             logout();
-        });
-
-        FB.getLoginStatus(function(response) {
-             if (response.session) {
-                  login();
-              }
-         });
-    };
     (function() {
         var e = document.createElement('script');
         e.type = 'text/javascript';
@@ -95,14 +102,21 @@ body {background-image:url(/static/img/bg.png);}
          );
      }
 </script>
-<div id="content">
-<p><fb:login-button autologoutlink="true" perms="email,user_birthday,status_update,publish_stream"></fb:login-button></p>
-    <div id="uploadedImage" name="uploadedImage"></div>
-    <input type="text" value="http://192.168.15.116/p/{{id}}">
-    <a href="javascript:sendMypeople()"><img src="/static/img/MyPeople.jpg"></a>
-    <a href="javascript:setStatus()"><img src="/static/img/Facebook.jpg"></a>
-    <a href="javascript:sendYozm()"><img src="/static/img/Yozm.jpg"></a>
+<div class="uiBox">
+    <div id="uploadedImage"></div>
+    <br/><br/><br/>
+    <div>
+        <button class="btn btn-large btn-danger" onclick="window.prompt('복사해서 사용하세요.', 'http://192.168.15.116/p/{{id}}')">http://192.168.15.116/p/{{id}}</button>
+    </div>
+    <br/><br/>
+    <div id="content">
+        <a href="javascript:sendMypeople()"><img src="/static/img/MyPeople.jpg" width="30px"></a>
+        <a href="javascript:setStatus()"><img src="/static/img/Facebook.jpg" width="30px"></a>
+        <a href="javascript:sendYozm()"><img src="/static/img/Yozm.jpg" width="30px"></a>
+    </div>
+
 </div>
+
 </body>
 
 </html>
