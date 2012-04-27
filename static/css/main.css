@@ -3,14 +3,13 @@ body
 background-image:url('../img/fonly.jpg');
 background-repeat:no-repeat;
 background-attachment:fixed;
-background-position:50% top; 
+background-position:center top; 
 }
 
 .mainForm
 {
 position:relative;
-opacity:.5;
-background-color:silver;
+background-color:transparent;
 margin-left:auto;
 margin-right:auto;
 width:400px;
@@ -43,8 +42,8 @@ top:97px;
 margin:0;
 }
 
-input {
+input[type=text] {
 border:none;
-background-color:black; 
+background-color:transparent; 
 width:175px;
 }
