@@ -1,32 +1,45 @@
 body
 {
-background-image:url('../img/fonly.jpg');
+background-image:url('/static/img/fonly.jpg');
 background-repeat:no-repeat;
 background-attachment:fixed;
 background-position:center top; 
 }
 
-.mainForm
+.uiBox
 {
 position:relative;
 background-color:transparent;
 margin-left:auto;
 margin-right:auto;
 width:400px;
-height:400px;
+height:250px;
 top:300px;
 
 }
 
-.imgfile 
+#file 
 {
 position:absolute;
 left:141px;
+top:27px; 
+margin:0;
+}
+
+#btnFile 
+{
+position:absolute;
+left:269px;
 top:26px; 
 margin:0;
 }
 
-.phonetext
+#originFile
+{
+opacity:0;
+}
+
+#phone
 {
 position:absolute;
 left:141px;
@@ -34,7 +47,7 @@ top:62px;
 margin:0;
 }
 
-.nametext
+#title
 {
 position:absolute;
 left:141px;
@@ -48,12 +61,12 @@ background-color:transparent;
 width:175px;
 }
 
-.submit
+#submit
 {
 position:absolute;
 left:120px;
 top:150px;
 margin:0;
-width:100px;
-height:100px;
+width:160px;
+height:60px;
 }

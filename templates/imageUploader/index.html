@@ -4,16 +4,9 @@
 <meta charset="utf-8"> 
 <link href="/static/css/main.css" rel="stylesheet">
 <title>Welcome to fon.ly</title>
-<script type="text/javascript" src="/static/js/jQuery.fileinput.js"></script>
-<script type="text/javascript" src="/static/js/jquery.jqUploader.js"></script> 
-<script type="text/javascript" src="/static/js/swfobject.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script>
-jQuery(function($) {
-	$('#originFile').customFileInput();
-});
-//$("#fileUpload").jqUploader({background:"FFFFDF", barColor:"FF00FF"});
 
 var shorten = function() {
     if($('#fileUpload').val() == '') {
@@ -23,6 +16,22 @@ var shorten = function() {
     }
 }
 
+var pasteFilename = function() {
+
+    var fullPath = $('#originFile').val();
+
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+    }
+
+    $('#vfile').val(filename);
+}
+
+$('#originFile').live('change', pasteFilename);
+ 
+
 
 </script>
 <style>
@@ -30,24 +39,23 @@ var shorten = function() {
 </style>
 </head>
 <body>
-<form id="mainForm" name="mainForm" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">{% csrf_token %}
-<div class="mainForm">
-	<div class="imgfile">
-	    <input id="originFile" name="originFile" type="file"/>
-	   <!-- <input type="file" name="originFile" id="originFile"/> -->
-	</div>
-	<div class="phonetext">
-	    <input type="text" name="phone" id="phone" value="010-8719-2268" />
-	</div>
-	<div class="nametext">
-	    <input type="text" name="title" id="title" value="전호석" />
-	</div>
-        <div class="submit">
-	    <input type="button" value="Shorten" onclick="shorten()"/>
-	</div>
-</div>
+<form id="mainForm" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">{% csrf_token %}
+    <div class="uiBox">
+        <div id="file">
+            <input type="text" id="vfile" style="width:110px"/>
+        </div>
+        <div id="btnFile">
+           <input type="file" id="originFile" name="originFile" style="width:60px"/>
+        </div>
+        <div id="phone">
+            <input type="text" name="phone" value="010-8719-2268" />
+        </div>
+        <div id="title">
+            <input type="text" name="title" value="전호석" />
+        </div>
+        <a href="#" onclick="shorten()"><div id="submit"></div></a>
+    </div>
 </form>
-
 
 </body>
 </html>
