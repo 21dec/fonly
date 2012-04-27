@@ -13,10 +13,10 @@
 jQuery(function($) {
 	$('#originFile').customFileInput();
 });
+//$("#fileUpload").jqUploader({background:"FFFFDF", barColor:"FF00FF"});
 
 var shorten = function() {
-    if($('#originFile').val() == '') {
-
+    if($('#fileUpload').val() == '') {
         return false; 
     } else {
         $('#mainForm').submit()
@@ -30,7 +30,7 @@ var shorten = function() {
 </style>
 </head>
 <body>
-<form id="mainForm" name="mainForm" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">
+<form id="mainForm" name="mainForm" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">{% csrf_token %}
 <div class="mainForm">
 	<div class="imgfile">
 	    <input id="originFile" name="originFile" type="file"/>
@@ -46,21 +46,9 @@ var shorten = function() {
 	    <input type="button" value="Shorten" onclick="shorten()"/>
 	</div>
 </div>
-<!--
-<div>
-    
-        TITLE<input type="text" name="title" id="title" value="" />
-        PHONE NUMBER<input type="text" name="phone" id="phone" value="" />
-        <input type="button" value="Shorten" onclick="shorten()"/>
-   
-</div>
--->
 </form>
-{% for post in posts %}
-<img class="rounded-img" src="/static/upload/80_{{post.filename}}"  />
-{% endfor %}
+
 
 </body>
 </html>
-
 

@@ -1,3 +1,7 @@
 *.pyc
 static/upload/*
 .DS_Store
+bin
+include
+lib
+.Python
