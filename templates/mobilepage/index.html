@@ -2,15 +2,52 @@
 <head>
 <title>{{post.title}}</title>
 <link rel="apple-touch-icon" href="/static/upload/114_{{post.filename}}" />
+<link rel="shortcut icon"  href="/static/upload/114_{{post.filename}}" />
+<style>
+
+body {
+    margin:0px;
+}
+
+#uiMain {
+    background-image:url(/static/img/fonly_mobile.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center top; 
+    background-size:100%;
+    margin:auto auto;
+    width:100%;
+    height:1400px;
+}
+
+#btnPhone { 
+    background-color:transparent;
+    position:absolute;
+    top:900px;
+    left:300px;
+    width:400px;
+    height:200px;
+}
+
+#logo { 
+    background-image:url(/static/upload/80_{{post.filename}});
+    background-repeat:no-repeat;
+    background-size:100%;
+    position:absolute;
+    top:482px;
+    left:340px;
+    width:285px;
+    height:280px;
+    border-radius:44px;
+}
+</style>
 </head>
 <body>
-<script>
-if("true"=="{{phonecall}}") {
-    //window.location = "tel://{{post.phone}}";
-}
-</script>
-<p>
-<a href="tel:{{post.phone}}">전화걸기</a>
-<a href="http://192.168.12.107/p/9d0a52/">현재 페이지</a>
+<div id="uiMain"> 
+    <div id="logo"></div>
+    <a href="tel:{{post.phone}}"><div id="btnPhone"></div></a>
+</div>
+
+
 </body>
 </html>

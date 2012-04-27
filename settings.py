@@ -11,8 +11,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_mongodb_engine',
-        'NAME': 'pholy',
+    'ENGINE': 'django_mongodb_engine',
+    'NAME': 'pholy',
 	'HOST': '192.168.12.107'
     }
 }
