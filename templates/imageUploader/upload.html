@@ -7,17 +7,10 @@ function mypeoplePopup() {
     window.open('https://mypeople.daum.net/mypeople/web/share.do?prefix=' + prefix + '&link=' + link + '&source_id=none','width=600,height=500');
 }
 
-FB.init({
-   appId  : '368560879861636',
-   status : true, // check login status
-   cookie : true, // enable cookies to allow the server to access the session
-   xfbml  : true  // parse XFBML
- });
-
 function updateFacebook() {
    var prefix="{{title}}";
    var link="http://192.168.12.107/p/{{id}}"; 
-   window.open('http://www.facebook.com/connect/prompt_feed.php?&message=' + prefix + link,'width=600,height=500');
+   window.open('http://www.facebook.com/connect/prompt_feed.php?message=hello','width=600,height=500');
 }
 </script>
 <style>
@@ -40,11 +33,12 @@ body {background-image:url(/static/img/bg.png);}
 
 </style>
 <body>
+
 <div id="content">
     <div id="uploadedImage" name="uploadedImage"></div>
     <input type="text" value="http://192.168.15.116/p/{{id}}">
     <a href="javascript:mypeoplePopup()"><img src="/static/img/MyPeople.png"></a>
-    <a href="#" onclick="updateFacebook(); return false;">Facebook</a>
+    <a href="javascript:updateFacebook()"><img src="/static/img/Facebook.png"></a>
 </div>
 </body>
 
