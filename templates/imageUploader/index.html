@@ -4,11 +4,15 @@
 <meta charset="utf-8"> 
 <link href="/static/css/main.css" rel="stylesheet">
 <title>Welcome to fon.ly</title>
+<script type="text/javascript" src="/static/js/jQuery.fileinput.js"></script>
 <script type="text/javascript" src="/static/js/jquery.jqUploader.js"></script> 
+<script type="text/javascript" src="/static/js/swfobject.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script>
-$("#fileUpload").jqUploader({background:"FFFFDF", barColor:"FF00FF"});
+jQuery(function($) {
+	$('#originFile').customFileInput();
+});
 
 var shorten = function() {
     if($('#originFile').val() == '') {
@@ -29,14 +33,17 @@ var shorten = function() {
 <form id="mainForm" name="mainForm" enctype="multipart/form-data" action="/imageUploader/upload" method="POST">
 <div class="mainForm">
 	<div class="imgfile">
-	    <input id="fileUpload" name="fileUpload" type="file"/>
+	    <input id="originFile" name="originFile" type="file"/>
 	   <!-- <input type="file" name="originFile" id="originFile"/> -->
 	</div>
 	<div class="phonetext">
-	    <input type="text">
+	    <input type="text" name="phone" id="phone" value="" />
 	</div>
 	<div class="nametext">
-	    <input type="text">
+	    <input type="text" name="title" id="title" value="" />
+	</div>
+        <div class="submit">
+	    <input type="button" value="Shorten" onclick="shorten()"/>
 	</div>
 </div>
 <!--

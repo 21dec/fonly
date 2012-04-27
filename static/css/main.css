@@ -45,6 +45,16 @@ margin:0;
 
 input {
 border:none;
-background-color:black; 
+background-color:; 
 width:175px;
+}
+
+.submit
+{
+position:absolute;
+left:120px;
+top:150px;
+margin:0;
+width:100px;
+height:100px;
 }
