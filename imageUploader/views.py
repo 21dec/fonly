@@ -37,13 +37,6 @@ def upload(request):
 
     return HttpResponse(t.render(c))
     
-def uploadSuccess(request):
-    t = loader.get_template('imageUploader/uploadSuccess.html')
-    c = RequestContext(request, {'thumbUrl':'asdf'})
-
-    return HttpResponse(t.render(c))
-
-
 def saveImage(file, title):
     filename = uniqueName(file, title)
     fd = open(UPLOAD_DIR + filename, 'wb')

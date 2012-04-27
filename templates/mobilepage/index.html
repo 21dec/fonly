@@ -1,53 +1,52 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+
 <title>{{post.title}}</title>
 <link rel="apple-touch-icon" href="/static/upload/114_{{post.filename}}" />
 <link rel="shortcut icon"  href="/static/upload/114_{{post.filename}}" />
+
 <style>
 
-body {
-    margin:0px;
+body {margin:0;padding:0;}
+#main {position:absolute;width:100%; height:auto;}
+#logo {
+position:absolute;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+height:100%;
 }
 
-#uiMain {
-    background-image:url(/static/img/fonly_mobile.jpg);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center top; 
-    background-size:100%;
-    margin:auto auto;
-    width:100%;
-    height:1400px;
+#logo_img {
+    border-radius:25px;
+    border: solid 5px white;
+    width:95px;
+    height:95px;
+    margin-top:47%;
+    margin-left:33%;
+    padding:0px;
+    background-image:url(/static/upload/114_{{post.filename}})
 }
 
-#btnPhone { 
-    background-color:transparent;
+#phone {
     position:absolute;
-    top:900px;
-    left:300px;
-    width:400px;
-    height:200px;
-}
-
-#logo { 
-    background-image:url(/static/upload/80_{{post.filename}});
-    background-repeat:no-repeat;
-    background-size:100%;
-    position:absolute;
-    top:482px;
-    left:340px;
-    width:285px;
-    height:280px;
-    border-radius:44px;
+    margin-top:12%;
+    margin-left:35%;
+    width:30%;
+    height:26%;
 }
 </style>
 </head>
 <body>
-<div id="uiMain"> 
-    <div id="logo"></div>
-    <a href="tel:{{post.phone}}"><div id="btnPhone"></div></a>
+<img id="main" src="/static/img/fonly_mobile.jpg"/>
+<div id="logo">
+    <div id="logo_img"/>
 </div>
 
+    <a href="tel:{{post.phone}}"><div id="phone"></div></a>
 
 </body>
 </html>
