@@ -61,6 +61,12 @@ text-align:center;
     height:100%;
 }
 
+#title {
+    padding-top:5px;
+    font-size: 18px;
+    font-weight:bold;
+    color:white;
+}
 </style>
 <body>
 <div id="fb-root"></div>
@@ -104,7 +110,8 @@ text-align:center;
 </script>
 <div class="uiBox">
     <div id="uploadedImage"></div>
-    <br/><br/><br/>
+    <div id="title">{{title}}</div>
+    <br/><br/>
     <div>
         <button class="btn btn-large btn-danger" onclick="window.prompt('복사해서 사용하세요.', 'http://192.168.15.116/p/{{id}}')">http://192.168.15.116/p/{{id}}</button>
     </div>
