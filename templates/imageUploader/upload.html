@@ -1,26 +1,26 @@
-<html>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <script type="text/javascript">
-function mypeoplePopup() {
+function sendMypeople() {
     var prefix="{{title}}";
     var link="http://192.168.12.107/p/{{id}}";
     window.open('https://mypeople.daum.net/mypeople/web/share.do?prefix=' + prefix + '&link=' + link + '&source_id=none','width=600,height=500');
 }
 
-FB.init({
-   appId  : '368560879861636',
-   status : true, // check login status
-   cookie : true, // enable cookies to allow the server to access the session
-   xfbml  : true  // parse XFBML
- });
+function sendYozm() {
+    var prefix="{{title}}";
+    var link="http://192.168.12.107/p/{{id}}";
+    window.open('http://yozm.daum.net/api/popup/prePost?prefix=' + prefix + '&link=' + link + '&source_id=none','width=600,height=500');
+}
 
 function updateFacebook() {
    var prefix="{{title}}";
    var link="http://192.168.12.107/p/{{id}}"; 
-   window.open('http://www.facebook.com/connect/prompt_feed.php?&message=' + prefix + link,'width=600,height=500');
+   window.open('http://www.facebook.com/connect/prompt_feed.php?message=hello','width=600,height=500');
 }
 </script>
+
 <style>
+
 body {background-image:url(/static/img/bg.png);}
 
 #content {
@@ -40,11 +40,68 @@ body {background-image:url(/static/img/bg.png);}
 
 </style>
 <body>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    window.fbAsyncInit = function() {
+        FB.init({appId: '368560879861636', status: true, cookie: true, xfbml: true});
+                
+        FB.Event.subscribe('auth.login', function(response) {
+             login();
+        });
+        FB.Event.subscribe('auth.logout', function(response) {
+             logout();
+        });
+
+        FB.getLoginStatus(function(response) {
+             if (response.session) {
+                  login();
+              }
+         });
+    };
+    (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol +
+        '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+
+    function login(){
+        FB.api('/me', function(response) {
+        document.getElementById('login').style.display = "block";
+        document.getElementById('login').innerHTML = response.name + " succsessfully logged in!";
+        });
+     }
+     function logout(){
+        document.getElementById('login').style.display = "none";
+     }
+    
+     function setStatus(){
+         status1 = "test";
+             FB.api(
+             {
+                method: 'status.set',
+                status: status1
+              },
+              function(response) {
+                 if (response == 0){
+                     alert('Your facebook status not updated. Give Status Update Permission.');
+                  }
+                  else{
+                      alert('Your facebook status updated');
+                  }
+              }
+         );
+     }
+</script>
 <div id="content">
+<p><fb:login-button autologoutlink="true" perms="email,user_birthday,status_update,publish_stream"></fb:login-button></p>
     <div id="uploadedImage" name="uploadedImage"></div>
     <input type="text" value="http://192.168.15.116/p/{{id}}">
-    <a href="javascript:mypeoplePopup()"><img src="/static/img/MyPeople.png"></a>
-    <a href="#" onclick="updateFacebook(); return false;">Facebook</a>
+    <a href="javascript:sendMypeople()"><img src="/static/img/MyPeople.jpg"></a>
+    <a href="javascript:setStatus()"><img src="/static/img/Facebook.jpg"></a>
+    <a href="javascript:sendYozm()"><img src="/static/img/Yozm.jpg"></a>
 </div>
 </body>
 
