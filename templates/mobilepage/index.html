@@ -38,12 +38,20 @@ height:100%;
     width:30%;
     height:26%;
 }
+#title {
+    margin-top:100px;
+    padding-top:5px;
+    font-size: 18px;
+    font-weight:bold;
+    color:white;
+}
 </style>
 </head>
 <body>
 <img id="main" src="/static/img/fonly_mobile.jpg"/>
 <div id="logo">
     <div id="logo_img"/>
+    <div id="title">{{post.title}}</div>
 </div>
 
     <a href="tel:{{post.phone}}"><div id="phone"></div></a>
