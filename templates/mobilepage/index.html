@@ -11,6 +11,17 @@
 
 body {margin:0;padding:0;}
 #main {position:absolute;width:100%; height:auto;}
+#count {
+position:absolute;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+top:120px;
+width:100%;
+font-style:italic;
+color:white;
+}
+
 #logo {
 position:absolute;
 text-align:center;
@@ -49,6 +60,9 @@ height:100%;
 </head>
 <body>
 <img id="main" src="/static/img/fonly_mobile.jpg"/>
+<div id="count">
+    {{count}} call
+</div>
 <div id="logo">
     <div id="logo_img"/>
     <div id="title">{{post.title}}</div>

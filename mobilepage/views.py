@@ -11,7 +11,7 @@ def index(request, pk):
     post = Post.objects.get(_id=pk)
 
     t = loader.get_template('mobilepage/index.html')
-    c = RequestContext(request, {'post':post})
+    c = RequestContext(request, {'post':post, 'count':"1sh"})
 
 
     return HttpResponse(t.render(c))
