@@ -23,7 +23,13 @@ def view(request, pk):
     
     post = Post.objects.get(_id=pk)
 
-    t = loader.get_template('imageUploader/view.html')
+    userAgent = request.META['HTTP_USER_AGENT']
+    print userAgent
+    if userAgent.find('Android') > 0 or userAgent.find('iPhone') > 0:
+        t = loader.get_template('mobilepage/index.html')
+    else:
+        t = loader.get_template('imageUploader/view.html')
+
     c = RequestContext(request, {'post':post, 'pk':pk})
 
 
