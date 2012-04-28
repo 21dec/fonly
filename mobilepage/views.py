@@ -9,13 +9,9 @@ import time, os
 def index(request, pk):
     
     post = Post.objects.get(_id=pk)
-    
-    #phonecall = 'false' if request.META.has_key('HTTP_REFERER') else 'true'
-
-    phonecall = 'false'
 
     t = loader.get_template('mobilepage/index.html')
-    c = RequestContext(request, {'post':post, 'phonecall':phonecall})
+    c = RequestContext(request, {'post':post})
 
 
     return HttpResponse(t.render(c))

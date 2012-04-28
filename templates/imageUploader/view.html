@@ -8,20 +8,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 function sendMypeople() {
-    var prefix="{{title}}";
-    var link="http://192.168.15.116/p/{{id}}";
+    var prefix="{{post.title}}";
+    var link="http://192.168.15.116/p/{{pk}}";
     window.open('https://mypeople.daum.net/mypeople/web/share.do?prefix=' + prefix + '&link=' + link + '&source_id=none','width=600,height=500');
 }
 
 function sendYozm() {
-    var prefix="{{title}}";
-    var link="http://192.168.15.116/p/{{id}}";
+    var prefix="{{post.title}}";
+    var link="http://192.168.15.116/p/{{pk}}";
     window.open('http://yozm.daum.net/api/popup/prePost?prefix=' + prefix + '&link=' + link + '&source_id=none','width=600,height=500');
 }
 
 function updateFacebook() {
-   var prefix="{{title}}";
-   var link="http://192.168.15.116/p/{{id}}"; 
+   var prefix="{{post.title}}";
+   var link="http://192.168.15.116/p/{{pk}}"; 
    window.open('http://www.facebook.com/connect/prompt_feed.php?message=hello','width=600,height=500');
 }
 </script>
@@ -51,7 +51,7 @@ text-align:center;
     width:114px;
     height:114px;
     padding:0px;
-    background-image:url(/static/upload/{{filename}})
+    background-image:url(/static/upload/114_{{post.filename}})
 }
 
 #content {
@@ -110,10 +110,10 @@ text-align:center;
 </script>
 <div class="uiBox">
     <div id="uploadedImage"></div>
-    <div id="title">{{title}}</div>
+    <div id="title">{{post.title}}</div>
     <br/><br/>
     <div>
-        <button class="btn btn-large btn-danger" onclick="window.prompt('복사해서 사용하세요.', 'http://192.168.15.116/p/{{id}}')">http://192.168.15.116/p/{{id}}</button>
+        <button class="btn btn-large btn-danger" onclick="window.prompt('복사해서 사용하세요.', 'http://192.168.15.116/p/{{pk}}')">http://192.168.15.116/p/{{pk}}</button>
     </div>
     <br/><br/>
     <div id="content">

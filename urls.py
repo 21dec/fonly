@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^imageUploader/index$', 'imageUploader.views.index'),
-    url(r'^r', 'imageUploader.views.index'),
     url(r'^imageUploader/upload$', 'imageUploader.views.upload'),
+    url(r'^r$', 'imageUploader.views.index'),
+    url(r'^r/(?P<pk>[a-zA-Z0-9]{6})/+$', 'imageUploader.views.view'),
     url(r'^p/(?P<pk>[a-zA-Z0-9]{6})/+$', 'mobilepage.views.index'),
 )

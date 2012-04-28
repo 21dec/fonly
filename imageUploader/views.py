@@ -19,6 +19,16 @@ def index(request):
 
     return HttpResponse(t.render(c))
 
+def view(request, pk):
+    
+    post = Post.objects.get(_id=pk)
+
+    t = loader.get_template('imageUploader/view.html')
+    c = RequestContext(request, {'post':post, 'pk':pk})
+
+
+    return HttpResponse(t.render(c))
+
 def upload(request):
     _filename = saveImage(request.FILES['originFile'], request.POST['title'])
     _key = _filename.split('.')[0]
